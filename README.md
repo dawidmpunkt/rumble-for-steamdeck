@@ -33,7 +33,7 @@ In the mod, the signal is hijacked and fed into two DRV2605L Haptic Motor Driver
   While playing Metal Gear Rising Revengence and the Majoras Mask Recompilation, I noticed that the intensity of the game rumble is a lot weaker than haptic feedback. In SteamOS options, there is only the option to adjust the overall intensity of the haptic feedback. adjusting haptic intensity also adjusts the intensity of game rumble. But game rumble is still a lot weaker than haptic feedback.
   This issue was already documented on the SteamOS github: https://github.com/ValveSoftware/SteamOS/issues/1003
   It would be great if game rumble could be adjusted independently of haptic intensity.
-
+- I noticed, that game rumble on the Steam Deck is only produced by the left trackpad.
 ## ToDo
 - [ ] Test different actuators (ALPS AFR14A901B, Vibronics VJP12, INEED MOTOR)
 - [ ] Design 3D-printed actuator mount
