@@ -28,6 +28,12 @@ Game rumble is supported by the Steam Deck's haptic response system, but it seem
 This project aims to utilize additional haptic motors to provide stronger rumble sensation while playing games on the steam deck. The vibration signal for the left and right touchpad is produced by the ARM microcontroller on the daughter board.
 In the mod, the signal is hijacked and fed into two DRV2605L Haptic Motor Drivers. A 1 µF capacitor is used to couple the AC-signal from the Steam Deck to the DRV2605L. Each DRV2605L then drives a motor (in this case a LRA - AFT14), mounted on the back-shell of the Steam Deck. The DRV2605L needs to be initialized each time it is powered. An ATTiny is used for this. To be able to toggle the rumble mod on resp. off, the signal of the Steam Deck's map and menu buttons is being hijacked and fed into the ATTiny. When the ATTiny registers, that both menu and map buttons are pressed simultaneously, the EN-pin of on the DRV2605L is being toggled on/off.
 
+## Issues
+- Rumble intensity is weaker than the intensity of the haptic feedback.
+  While playing Metal Gear Rising Revengence and the Majoras Mask Recompilation, I noticed that the intensity of the game rumble is a lot weaker than haptic feedback. In SteamOS options, there is only the option to adjust the overall intensity of the haptic feedback. adjusting haptic intensity also adjusts the intensity of game rumble. But game rumble is still a lot weaker than haptic feedback.
+  This issue was already documented on the SteamOS github: https://github.com/ValveSoftware/SteamOS/issues/1003
+  It would be great if game rumble could be adjusted independently of haptic intensity.
+
 ## ToDo
 - [ ] Test different actuators (ALPS AFR14A901B, Vibronics VJP12, INEED MOTOR)
 - [ ] Design 3D-printed actuator mount
