@@ -2,6 +2,17 @@
 
 This is a project (work in progress) to modify the rumble feature on Valves Steam Deck.
 
+### Disclaimer:
+This Project includes modification your hardware (Steam Deck, ATtiny, DRV2605, etc.) and soldering of thin wires and small pads. 
+Any attempt to carry out the modification described here is at your own risk.
+Please be careful as to not damage your hardware and in consequence yourself or others.
+Do not attempt this mod, if you are not competent in soldering and working with electronics.
+The Steam Deck contains a Lithium-Polymer battery cell which can be very dangerous if handled improbable (e.g. short circuit).
+Always unplug your battery and check for shorts before reconnecting the battery.
+I don't take any responsibility or liability for any damages to you, your hardware or anything else.
+
+That said: good luck and happy tinkering.
+
 ## Information on the componentes used:
 
 - ATTiny (15 through 85)
