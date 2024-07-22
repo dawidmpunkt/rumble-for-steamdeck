@@ -54,13 +54,27 @@ In the mod, the signal is hijacked and fed into two DRV2605L Haptic Motor Driver
 ![Alt text](pictures/DRV2605L_wiring.jpg?raw=true "Schematic")
 Figure 5: Schematic diagram of wiring of the devices, that are used in the mod.
 
+### Configuring the ATTiny
+
+To initialize the DRV2605L, a ATTiny85 (cheapest one on Aliexpress) is used. The ATTiny is programmed with ArduinoIDE. The "Adafruit DRV2605 Library" is used for programming.
+https://github.com/adafruit/Adafruit_DRV2605_Library
+
+The DRV2605L was configured in Audio-to-Vibe mode in the first successful tests.
+
 ## Issues
 - Rumble intensity is weaker than the intensity of the haptic feedback.
   While playing Metal Gear Rising Revengence and the Majoras Mask Recompilation, I noticed that the intensity of the game rumble is a lot weaker than haptic feedback. In SteamOS options, there is only the option to adjust the overall intensity of the haptic feedback. adjusting haptic intensity also adjusts the intensity of game rumble. But game rumble is still a lot weaker than haptic feedback.
   This issue was already documented on the SteamOS github: https://github.com/ValveSoftware/SteamOS/issues/1003
   It would be great if game rumble could be adjusted independently of haptic intensity.
 - I noticed, that game rumble on the Steam Deck is only produced by the left trackpad.
+
 ## ToDo
+- [ ] Update schematic (pullup resistors on i2c lines, coupling capacitors, second enable pin, pullup/-down on enable pins)
+- [ ] Locate power sources for the circuit (Hook up ATTiny to daughterboard and DRV2605L directly to Battery?)
+- [ ] Fix errors on the picture of the daughterboard (position of the red marker for the right signal is not 100% correct: points to ground)
+- [ ] Calibrate DRV2605L with the LRA
+- [ ] Configure DRV2605L in audio mode
+- [ ] Filter out haptic feedback, pass-through for game-rumble signal
 - [ ] Test different actuators (ALPS AFR14A901B, Vibronics VJP12, INEED MOTOR)
 - [ ] Design 3D-printed actuator mount
 
