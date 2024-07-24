@@ -13,7 +13,7 @@ I don't take any responsibility or liability for any damages to you, your hardwa
 
 With that said: good luck and happy tinkering.
 
-## Information on the componentes used:
+## Information on the components used:
 
 - ATTiny (15 through 85)
   https://www.microchip.com/en-us/product/attiny85
