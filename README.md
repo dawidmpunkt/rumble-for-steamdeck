@@ -72,6 +72,8 @@ https://github.com/adafruit/Adafruit_DRV2605_Library
 
 The DRV2605L was configured in Audio-to-Vibe mode in the first successful tests.
 
+You can find the code [here](DRV2605_test.ino). 
+
 ## Issues
 - Rumble intensity is weaker than the intensity of the haptic feedback.
   While playing Metal Gear Rising Revengence and the Majoras Mask Recompilation, I noticed that the intensity of the game rumble is a lot weaker than haptic feedback. In SteamOS options, there is only the option to adjust the overall intensity of the haptic feedback. adjusting haptic intensity also adjusts the intensity of game rumble. But game rumble is still a lot weaker than haptic feedback.
