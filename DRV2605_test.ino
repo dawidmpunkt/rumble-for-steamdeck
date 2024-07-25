@@ -53,6 +53,6 @@ void loop() {
 if (digitalRead(map_buttonPin) == HIGH && digitalRead(menu_buttonPin) == HIGH) {
  digitalWrite(DRV_EN, !digitalRead(DRV_EN));
   // Delay to avoid bouncing
-  delay(50);
+  delay(750);
 }
 }
