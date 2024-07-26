@@ -16,19 +16,19 @@ With that said: good luck and happy tinkering.
 ## Information on the components used:
 
 - ATTiny 85
-  https://www.microchip.com/en-us/product/attiny85
+  <br />https://www.microchip.com/en-us/product/attiny85
 
 - DRV2605L - Haptic Motor Driver
-  https://www.ti.com/product/de-de/DRV2605L
-  The DRV2605L is a haptic motor driver that supports both linear resonance actuators (LRA) and eccentric rotating mass motors (ERM). Adafruit provides DRV2605L breakout-boards, that can easily be used for experimenting:
-https://learn.adafruit.com/adafruit-drv2605-haptic-controller-breakout/overview
+  <br />https://www.ti.com/product/de-de/DRV2605L
+  <br />The DRV2605L is a haptic motor driver that supports both linear resonance actuators (LRA) and eccentric rotating mass motors (ERM). Adafruit provides DRV2605L breakout-boards, that can easily be used for experimenting:
+<br />https://learn.adafruit.com/adafruit-drv2605-haptic-controller-breakout/overview
 
 - Alps Haptic Reactor - AFT14 (Linear Resonance Actuator - LRA)
-  https://tech.alpsalpine.com/e/products/category/haptic/sub/01/series/aft14/
-  (most likely the LRA that is used on JoyCons on the Nintendo Switch) 
+  <br />https://tech.alpsalpine.com/e/products/category/haptic/sub/01/series/aft14/
+  <br />(most likely the LRA that is used on JoyCons on the Nintendo Switch) 
 
 - Valve Steam Deck LCD:
-  https://www.steamdeck.com
+  <br />https://www.steamdeck.com
 
 ## Rationale:
 
@@ -37,10 +37,10 @@ While the effect feels quite strong, as fingers are touching the touchpads, it i
 Game rumble is supported by the Steam Deck's haptic response system, but it seems to be tailored entirely for haptic response of the touch pads. Vibrations produces by game rumble are significantly weaker (see Figure 1 and 2) than by haptic response.
 
 ![Alt text](pictures/haptic-feedback_12dB.jpg?raw=true "Oscilloscope reading of the haptic feedback signal")
-Figure 1: Oscilloscope reading of the AC haptic feedback signal, which is created by the microcontroller on the daughterboard. Haptic intensity was set to +12 dB in SteamOS
+<br />Figure 1: Oscilloscope reading of the AC haptic feedback signal, which is created by the microcontroller on the daughterboard. Haptic intensity was set to +12 dB in SteamOS
 
 ![Alt text](pictures/Metal-Gear-Rising_12dB.jpg?raw=true "Oscilloscope reading of rumble signal while playing Metal Gear Rising ")
-Figure 2: Oscilloscope reading of the AC rumble signal, while playing Metal Gear Rising: Revengeance. Haptic intensity was set to +12 dB in SteamOS
+<br />Figure 2: Oscilloscope reading of the AC rumble signal, while playing Metal Gear Rising: Revengeance. Haptic intensity was set to +12 dB in SteamOS
 
 ## Aim
 
@@ -51,35 +51,40 @@ This project aims to utilize additional haptic motors to provide stronger rumble
 The vibration signal for the left and right touchpad is produced by the ARM microcontroller on the daughter board (see Fig. 3).
 
 ![Alt text](pictures/daughterboard_vibration_traces.jpg?raw=true "location of the traces with the vibration signal")
-Figure 3: Location of the traces, which provide the vibration signal for the Left (L) and Right (R) touch-pad
+<br />Figure 3: Location of the traces, which provide the vibration signal for the Left (L) and Right (R) touch-pad
 
 For each (the left and right) channel, the microcontroller produces a PWM signal which is transformed into a 160 Hz AC-signal by passing through a low-pass filter (RC-circuit). The PWM signal consists of a fixed 200 kHz carrier frequency with a duty cycle of 50% onto which the vibration signal is integrated (similar to class-D modulation) (see Fig. 4). 0% duty cycle correspond to peak minimum of the ac signal and 100% duty cycle correspond to peak maximum of the wave.
 
 ![Alt text](pictures/vibration-PWM-carrier-wave.jpg?raw=true "PWM carrier frequency and vibraton signal")
-Figure 4: 200 kHz carrier frequency and vibration signal
+<br />Figure 4: 200 kHz carrier frequency and vibration signal
 
 ## The mod
 
 In the mod, the signal is hijacked and fed into two DRV2605L Haptic Motor Drivers (see Figure 5). A 1 µF capacitor is used to couple the AC-signal from the Steam Deck to the DRV2605L. Each DRV2605L then drives a motor (in this case a LRA - AFT14), mounted on the back-shell of the Steam Deck. The DRV2605L needs to be initialized each time it is powered. An ATTiny is used for this. To be able to toggle the rumble mod on resp. off, the signal of the Steam Deck's map and menu buttons is being hijacked and fed into the ATTiny. When the ATTiny registers, that both menu and map buttons are pressed simultaneously, the EN-pin of on the DRV2605L is being toggled on/off. 
 
 ![Alt text](pictures/DRV2605L_wiring.jpg?raw=true "Schematic")
-Figure 5: Schematic diagram of wiring of the devices, that are used in the mod.
+<br />Figure 5: Schematic diagram of wiring of the devices, that are used in the mod.
 
 ### Configuring the ATTiny
 
 To initialize the DRV2605L, a ATTiny85 (cheapest one on Aliexpress) is used. The ATTiny is programmed with ArduinoIDE. The "Adafruit DRV2605 Library" is used for programming.
-https://github.com/adafruit/Adafruit_DRV2605_Library
+<br />https://github.com/adafruit/Adafruit_DRV2605_Library
 
-To program the ATtiny I used an Arduino Uno as Programmer (Arduino as ISP).
-See this tutorial: 
-https://www.instructables.com/Program-an-ATtiny-with-Arduino/
+To program the ATtiny I used an Arduino Uno as Programmer (Arduino as ISP).See this tutorial: 
+<br />https://www.instructables.com/Program-an-ATtiny-with-Arduino/
+
 If you use Arduino IDE (like me) you can upload sketches to the ATtiny via "Sketch -> Upload Using Programmer". 
-There are issues with Wire.h (used by the adafruit library) and ATtiny.
-See issue discussed here: 
-https://forum.arduino.cc/t/attiny85-to-control-haptic-motor-driver-adafruit-drv2605l/587215
+
+There are issues with Wire.h (used by the adafruit library) and ATtiny. See issue discussed here: 
+<br />https://forum.arduino.cc/t/attiny85-to-control-haptic-motor-driver-adafruit-drv2605l/587215
+
 You will need to use a different ATtiny core. I used this one: 
-https://github.com/SpenceKonde/ATTinyCore
-Steps in the tutorials above: Program the Arduino as programmer, burn bootloader on ATtiny, upload sketch to ATtiny.
+<br />https://github.com/SpenceKonde/ATTinyCore
+
+Steps in the tutorials above: 
+- Program the Arduino as programmer
+- burn bootloader on ATtiny
+- upload sketch to ATtiny.
 
 The DRV2605L was configured in Audio-to-Vibe mode in the first successful tests.
 
