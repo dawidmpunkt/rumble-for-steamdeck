@@ -1,7 +1,8 @@
-#include <Wire.h>
+#include <Wire.h> // there are issues with Wire.h and ATtiny. See information in the Readme
 #include "Adafruit_DRV2605.h"
 
 Adafruit_DRV2605 drv;
+
 
 // pin definitons
 const int map_buttonPin = 3;  // the pin that the pushbutton is attached to
@@ -10,7 +11,6 @@ const int DRV_EN = 1;    // the pin that the DRV2605 is attached to
 
 void setup() {
   drv.begin();
-
   // initialize the button pin as a input:
   pinMode(map_buttonPin, INPUT);
   pinMode(menu_buttonPin, INPUT);
@@ -43,7 +43,7 @@ void setup() {
   //low pass filter 200 Hz
   drv.writeRegister8(DRV2605_REG_AUDIOCTRL, 0x07);
   //disable driver
-  digitalWrite(DRV_EN, HIGH);
+  digitalWrite(DRV_EN, LOW);
 }
 
 
