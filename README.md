@@ -15,7 +15,7 @@ With that said: good luck and happy tinkering.
 
 ## Information on the components used:
 
-- ATTiny (15 through 85)
+- ATTiny 85
   https://www.microchip.com/en-us/product/attiny85
 
 - DRV2605L - Haptic Motor Driver
@@ -69,6 +69,14 @@ Figure 5: Schematic diagram of wiring of the devices, that are used in the mod.
 
 To initialize the DRV2605L, a ATTiny85 (cheapest one on Aliexpress) is used. The ATTiny is programmed with ArduinoIDE. The "Adafruit DRV2605 Library" is used for programming.
 https://github.com/adafruit/Adafruit_DRV2605_Library
+
+To program the ATtiny I used an Arduino Uno as Programmer (Arduino as ISP).
+See this tutorial: https://www.instructables.com/Program-an-ATtiny-with-Arduino/
+If you use Arduino IDE (like me) you can upload sketches to the ATtiny via "Sketch -> Upload Using Programmer" 
+There are issues with Wire.h (used by the adafruit library) and ATtiny.
+See issue discussed here: https://forum.arduino.cc/t/attiny85-to-control-haptic-motor-driver-adafruit-drv2605l/587215
+You will need to use a different ATtiny core. I used this one: https://github.com/SpenceKonde/ATTinyCore
+Steps in the tutorials above: Program the Arduino as programmer, burn bootloader on ATtiny, upload sketch to attiny.
 
 The DRV2605L was configured in Audio-to-Vibe mode in the first successful tests.
 
