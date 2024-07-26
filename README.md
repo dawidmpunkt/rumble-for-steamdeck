@@ -42,11 +42,11 @@ Game rumble is supported by the Steam Deck's haptic response system, but it seem
 ![Alt text](pictures/Metal-Gear-Rising_12dB.jpg?raw=true "Oscilloscope reading of rumble signal while playing Metal Gear Rising ")
 <br />Figure 2: Oscilloscope reading of the AC rumble signal, while playing Metal Gear Rising: Revengeance. Haptic intensity was set to +12 dB in SteamOS
 
-## Aim
+### Aim
 
 This project aims to utilize additional haptic motors to provide stronger rumble sensation while playing games on the steam deck. Instead of just disconnecting the touchpad motors and connecting different motors to the daughter board, this project aims to retain the functionality of the touch pads. Just connecting additional motors in parallel or in series with the existing touchpad motors would limit the output power of both motors. In contrast, hijacking the vibration signal and feeding them into a buffered motor drivers does not interfere with the function of the touch pads and poses not risk in overloading the driver on the daughter board by connecting a smaller load in form of a motor in parallel. 
 
-### Hijacking the vibration signal
+### How is vibration created on the steam deck.
 
 The vibration signal for the left and right touchpad is produced by the ARM microcontroller on the daughter board (see Fig. 3).
 
@@ -57,6 +57,8 @@ For each (the left and right) channel, the microcontroller produces a PWM signal
 
 ![Alt text](pictures/vibration-PWM-carrier-wave.jpg?raw=true "PWM carrier frequency and vibraton signal")
 <br />Figure 4: 200 kHz carrier frequency and vibration signal
+
+Each signal then runs throug a
 
 ## The mod
 
