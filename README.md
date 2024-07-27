@@ -59,10 +59,12 @@ If this could be solved in software, this would save a lot of work. Unfortunatel
 
 You could disconnect the LRA of the touchpad and attatch another LRA, as it is done here:
 <br />https://www.reddit.com/r/SteamDeckModded/comments/14zse0s/steam_deck_vibrationmotor_upgrade/
-But then you are left without the haptic feedback on the touchpad(s).
+<br />But then you are left without the haptic feedback on the touchpad(s).
 
 (Audio) amplifiers are tailored to deliver power efficiently at specific loads (impedance of the LRA in this case). If you wire another LRA in parallel you reduce the impedance of the load (by half, if both LRAs have an impedance of 8 Ohms) and could possibly overload the audio amplifier (and possibly damage it) or cause it to malfunction, because it detects a lower load. 
 If you connect LRAs in series, you reduce the voltage on the LRA and thus reduce output significantly.
+
+If we want to retain the haptic response of the touchpads, we need another option.
 
 ### How is vibration created on the steam deck.
 
