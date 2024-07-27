@@ -67,19 +67,22 @@ For each (the left and right) channel, the microcontroller produces a PWM signal
 ![Alt text](pictures/vibration-PWM-carrier-wave.jpg?raw=true "PWM carrier frequency and vibraton signal")
 <br />Figure 4: 200 kHz carrier frequency and vibration signal
 
-Each (left and right) AC-signal then runs through what appears to be an AD51652 Class-D audio amplifier (see Figure 5) on each of the daughter boards. From the audio amplifier, the positive and negative signal (both biased to 2.5 V) then travels through some beefy inductors to the positive (red) and negative (black) input of the Steam Deck's LRA (which acts like a speaker). 
+Each (left and right) AC-signal then runs through what appears to be an AD51652 Class-D audio amplifier (see Figure 5 and Figure 6) on each of the daughter boards. From the audio amplifier, the positive and negative signal (both biased to 2.5 V) then travels through some beefy inductors to the positive (red) and negative (black) input of the Steam Deck's LRA (which acts like a speaker). 
 
 There was a discussion on the Steam Deck Discord, that this is an incorrect/inefficient way to drive LRAs, as they are meant to be driven by PWM. Possibly, the developers did not put much work into it as this solution was working well enough for haptic response.
 
 ![Alt text](pictures/AD51652-signal.jpg?raw=true "Travel path of AC-signal on left daughterboard. AD51652")
 <br />Figure 5: Travel path of the AC-signal on the left daughterboard to the LRA via an AD51652 audio amplifier.
 
+![Alt text](pictures/AD51652-close-up.jpg.jpg?raw=true "Close-Up of the AD51652")
+<br />Figure 6: Close-Up of the AD51652.
+
 ## The mod
 
-In the mod, the signal is hijacked and fed into two DRV2605L Haptic Motor Drivers (see Figure 6). A 1 µF capacitor is used to couple the AC-signal from the Steam Deck to the DRV2605L. Each DRV2605L then drives a motor (in this case a LRA - AFT14), mounted on the back-shell of the Steam Deck. The DRV2605L needs to be initialized each time it is powered. An ATTiny is used for this. To be able to toggle the rumble mod on resp. off, the signal of the Steam Deck's map and menu buttons is being hijacked and fed into the ATTiny. When the ATTiny registers, that both menu and map buttons are pressed simultaneously, the EN-pin of on the DRV2605L is being toggled on/off. 
+In the mod, the signal is hijacked and fed into two DRV2605L Haptic Motor Drivers (see Figure 7). A 1 µF capacitor is used to couple the AC-signal from the Steam Deck to the DRV2605L. Each DRV2605L then drives a motor (in this case a LRA - AFT14), mounted on the back-shell of the Steam Deck. The DRV2605L needs to be initialized each time it is powered. An ATTiny is used for this. To be able to toggle the rumble mod on resp. off, the signal of the Steam Deck's map and menu buttons is being hijacked and fed into the ATTiny. When the ATTiny registers, that both menu and map buttons are pressed simultaneously, the EN-pin of on the DRV2605L is being toggled on/off. 
 
 ![Alt text](pictures/DRV2605L_wiring.jpg?raw=true "Schematic")
-<br />Figure 6: Schematic diagram of wiring of the devices, that are used in the mod.
+<br />Figure 7: Schematic diagram of wiring of the devices, that are used in the mod.
 
 ### Configuring the ATTiny
 
@@ -105,6 +108,16 @@ Steps in the tutorials above:
 The DRV2605L was configured in Audio-to-Vibe mode in the first successful tests.
 
 You can find the code [here](DRV2605_test.ino). 
+
+### Where do we take the power from?
+
+Good question... There have been reports of damages to the daughterboards by high current draw:
+<br />https://github.com/WUBBSY/RGBDeck
+<br />Also, connecting anything directly to the Steam Deck's battery can cause the Deck to refuse to start up or wake from standby:
+<br />https://github.com/WUBBSY/RGBDeck/issues/1
+
+I plan to draw the power the ATtiny vial the right daughterboard, since it draws very little power. The risk for damaging the daughterboard by high current draw is minimal this way. Also, this way it will only be powered, if the steam deck is on and not drawing any power if the steam deck is sleeping/off.
+Powering the DRV2605 is a little more tricky, since it draws more power. I am still working on this. I will try to use a step-down converter, hooked up to the Steam Deck's battery that will be triggered on, when there is power on the daughterboard.
 
 ## Issues
 - Rumble intensity is weaker than the intensity of the haptic feedback.
