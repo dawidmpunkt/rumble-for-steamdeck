@@ -57,7 +57,7 @@ If this could be solved in software, this would save a lot of work. Unfortunatel
 
 ### How is vibration created on the steam deck.
 
-The vibration signal for the left and right touchpad is produced by the ARM microcontroller on the daughter board (see Fig. 3).
+The vibration signal for the left and right touchpad is produced by the ARM microprocessor on the daughter board (see Fig. 3).
 
 ![Alt text](pictures/daughterboard_vibration_traces.jpg?raw=true "location of the traces with the vibration signal")
 <br />Figure 3: Location of the traces, which provide the vibration signal for the Left (L) and Right (R) touch-pad
