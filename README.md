@@ -74,7 +74,7 @@ There was a discussion on the Steam Deck Discord, that this is an incorrect/inef
 ![Alt text](pictures/AD51652-signal.jpg?raw=true "Travel path of AC-signal on left daughterboard. AD51652")
 <br />Figure 5: Travel path of the AC-signal on the left daughterboard to the LRA via an AD51652 audio amplifier.
 
-![Alt text](pictures/AD51652-close-up.jpg.jpg?raw=true "Close-Up of the AD51652")
+![Alt text](pictures/AD51652-close-up.jpg?raw=true "Close-Up of the AD51652")
 <br />Figure 6: Close-Up of the AD51652.
 
 ## The mod
