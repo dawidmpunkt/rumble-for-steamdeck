@@ -58,7 +58,7 @@ For each (the left and right) channel, the microcontroller produces a PWM signal
 ![Alt text](pictures/vibration-PWM-carrier-wave.jpg?raw=true "PWM carrier frequency and vibraton signal")
 <br />Figure 4: 200 kHz carrier frequency and vibration signal
 
-Each signal then runs throug a
+Each (left and right) AC-signal then runs through some sort of driver circuit (I have not located this yet) a on each of the daughter boards. The signal is then biased to 2.5 V on the negative and positive side of the Steam Deck's LRA. A push- resp. pull-signal is then applied on the positive/negative side of the LRA.
 
 ## The mod
 
