@@ -46,6 +46,15 @@ Game rumble is supported by the Steam Deck's haptic response system, but it seem
 
 This project aims to utilize additional haptic motors to provide stronger rumble sensation while playing games on the steam deck. Instead of just disconnecting the touchpad motors and connecting different motors to the daughter board, this project aims to retain the functionality of the touch pads. Just connecting additional motors in parallel or in series with the existing touchpad motors would limit the output power of both motors. In contrast, hijacking the vibration signal and feeding them into a buffered motor drivers does not interfere with the function of the touch pads and poses not risk in overloading the driver on the daughter board by connecting a smaller load in form of a motor in parallel. 
 
+### Why not increase rumble intensity in software?
+<br />Currently, the setting for the intensity of game rumble is directly tied to the intensity of haptics in SteamOS.
+By changing the intensity of haptics in the SteamOS settings, you change the intensity of rumble at the same time.
+Even if the intensity of haptics is set to maximum, the rumble signal, that is being produced by the microprocessor on the right motherboard, is still waaaay smaller in amplitude, than the haptics signal.
+There is an open issue since May 2023 on the SteamOS github page on separating the settings of rumble and haptics.
+<br />https://github.com/ValveSoftware/SteamOS/issues/1003
+<br />Until now nothing happened.
+If this could be solved in software, this would save a lot of work. Unfortunately I am not good in coding, so I can only solve this in hardware.
+
 ### How is vibration created on the steam deck.
 
 The vibration signal for the left and right touchpad is produced by the ARM microcontroller on the daughter board (see Fig. 3).
