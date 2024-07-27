@@ -109,6 +109,20 @@ The DRV2605L was configured in Audio-to-Vibe mode in the first successful tests.
 
 You can find the code [here](DRV2605_test.ino). 
 
+### Connecting the ATtiny - Buttons
+
+To toggle the LRA driver on/off, we will need to hijack the signal from the map and menu buttons and feed them into the ATtiny.
+For the menu button we have to attatch a wire to the FPC connector on the right daughterboard (as seen from the front. it is flipped, since we are looking at it from the back, just look at the board marked "R"). The menu button is wired to the second pin from the left (or from the bottom, see figure 8). Every odd numbered pin is connected to ground. Every even numbered pin is connected to the ARM microprocessor. On the left daughterboard we need to do the same for the map button.. It is still the second button from the left (or from top this time, see figure 9). We also have the option to connect the wire to a testing point in the middle of the daughterboard (See figure 10). I couldn't find a testing point on the right daughterboard.
+
+![Alt text](pictures/right-daughterboard-menu.jpg?raw=true "FPC connector on the right daughterboard")
+<br />Figure 8: FPC connector on the right daughterboard (Menu). Connect the wire to the second pin.
+
+![Alt text](pictures/left-daughterboard-map.jpg?raw=true "FPC connector on the left daughterboard")
+<br />Figure 9: FPC connector on the left daughterboard (Map). Connect the wire to the second pin.
+
+![Alt text](pictures/left-daughterboard-map2.jpg?raw=true "Testing point for Map button")
+<br />Figure 10: It is probably easier to connect the wire (Map) to this testing point.
+
 ### Where do we take the power from?
 
 Good question... There have been reports of damages to the daughterboards by high current draw:
@@ -116,7 +130,7 @@ Good question... There have been reports of damages to the daughterboards by hig
 <br />Also, connecting anything directly to the Steam Deck's battery can cause the Deck to refuse to start up or wake from standby:
 <br />https://github.com/WUBBSY/RGBDeck/issues/1
 
-I plan to draw the power the ATtiny vial the right daughterboard, since it draws very little power. The risk for damaging the daughterboard by high current draw is minimal this way. Also, this way it will only be powered, if the steam deck is on and not drawing any power if the steam deck is sleeping/off.
+I plan to draw the power the ATtiny vial the right daughterboard (as seen from the front. it is flipped, since we are looking at it from the back), since it draws very little power. The risk for damaging the daughterboard by high current draw is minimal this way. Also, this way it will only be powered, if the steam deck is on and not drawing any power if the steam deck is sleeping/off.
 Powering the DRV2605 is a little more tricky, since it draws more power. I am still working on this. I will try to use a step-down converter, hooked up to the Steam Deck's battery that will be triggered on, when there is power on the daughterboard.
 
 ## Issues
