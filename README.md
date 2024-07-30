@@ -92,7 +92,7 @@ There was a discussion on the Steam Deck Discord, that this is an incorrect/inef
 
 In the mod, the signal is hijacked and fed into two DRV2605L Haptic Motor Drivers (see Figure 7). A 1 µF capacitor is used to couple the AC-signal from the Steam Deck to the DRV2605L. Each DRV2605L then drives a motor (in this case a LRA - AFT14), mounted on the back-shell of the Steam Deck. The DRV2605L needs to be initialized each time it is powered. An ATTiny is used for this. To be able to toggle the rumble mod on resp. off, the signal of the Steam Deck's map and menu buttons is being hijacked and fed into the ATTiny. When the ATTiny registers, that both menu and map buttons are pressed simultaneously, the EN-pin of on the DRV2605L is being toggled on/off. 
 
-![Alt text](pictures/DRV2605L_wiring.jpg?raw=true "Schematic")
+![Alt text](pictures/Schematic-V2.jpg?raw=true "Schematic")
 <br />Figure 7: Schematic diagram of wiring of the devices, that are used in the mod.
 
 ### Configuring the ATTiny
@@ -152,7 +152,7 @@ Powering the DRV2605 is a little more tricky, since it draws more power. I am st
 - I noticed, that game rumble on the Steam Deck is only produced by the left trackpad.
 
 ## ToDo
-- [ ] Update schematic (pullup resistors on i2c lines, coupling capacitors, second enable pin, pullup/-down on enable pins)
+- [ ] Update schematic (pullup/-down on enable pins)
 - [ ] Locate power sources for the circuit (Hook up ATTiny to daughterboard and DRV2605L directly to Battery?)
 - [ ] Fix errors on the picture of the daughterboard (position of the red marker for the right signal is not 100% correct: points to ground)
 - [ ] Calibrate DRV2605L with the LRA
