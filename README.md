@@ -116,7 +116,8 @@ Steps in the tutorials above:
 - burn bootloader on ATtiny
 - upload sketch to ATtiny.
 
-The DRV2605L was configured in Audio-to-Vibe mode in the first successful tests.
+~~The DRV2605L was configured in Audio-to-Vibe mode in the first successful tests.~~
+The DRV2605L is configured in Audio mode now.
 
 You can find the code [here](DRV2605_test.ino). 
 
@@ -153,7 +154,7 @@ Powering the DRV2605 is a little more tricky, since it draws more power. I am st
 
 ## ToDo
 - [x] Update schematic (pullup/-down on enable pins)
-- [ ] Locate power sources for the circuit (Hook up ATTiny to daughterboard and DRV2605L directly to Battery?)
+- [x] Locate power sources for the circuit (Hook up ATTiny to daughterboard and DRV2605L directly to Battery?) -> completely hooked up to battery via separate LDO
 - [ ] Fix errors on the picture of the daughterboard (position of the red marker for the right signal is not 100% correct: points to ground)
 - [x] Calibrate DRV2605L with the LRA
 - [x] Configure DRV2605L in audio mode
