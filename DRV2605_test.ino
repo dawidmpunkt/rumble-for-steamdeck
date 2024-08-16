@@ -11,7 +11,7 @@ const int DRV_EN = 1;    // the pin that the DRV2605 is attached to
 
 void setup() {
   drv.begin();
-  Serial.begin(9600); // debugging only 
+  //Serial.begin(9600); // debugging only 
   // initialize the button pin as a input:
   pinMode(map_buttonPin, INPUT);
   pinMode(menu_buttonPin, INPUT);
@@ -31,7 +31,7 @@ void setup() {
   // Overdrive clamp voltage register (default=0x8C). Set to maximum voltage of 3.3V, see DRV2605 datasheet page 24 Formula 7, resp. datasheet of actuator
   drv.writeRegister8(DRV2605_REG_CLAMPV, 0x90);
 
-  // Calibration:
+  /*// Calibration:
   //Set Calibration Mode
   drv.writeRegister8(DRV2605_REG_MODE, 0x07);
   //Run Calibration
@@ -50,7 +50,7 @@ void setup() {
   byte x1 = drv.readRegister8(DRV2605_REG_AUTOCALEMP);
   Serial.print("Auto-calibration back-EMF result register - DRV2605_REG_AUTOCALEMP: ");  Serial.println(x0, BIN);
  
-  if (GO == 0) {
+  if (GO == 0) */{
 
   // Control3 Register (Address: 0x1D, default: 0xA0). Set closed-loop mode and analog input
   drv.writeRegister8(DRV2605_REG_CONTROL3, 0x82);  
