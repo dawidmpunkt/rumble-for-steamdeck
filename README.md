@@ -152,7 +152,7 @@ Powering the DRV2605 is a little more tricky, since it draws more power. I am st
 - I noticed, that game rumble on the Steam Deck is only produced by the left trackpad.
 
 ## ToDo
-- [ ] Update schematic (pullup/-down on enable pins)
+- [x] Update schematic (pullup/-down on enable pins)
 - [ ] Locate power sources for the circuit (Hook up ATTiny to daughterboard and DRV2605L directly to Battery?)
 - [ ] Fix errors on the picture of the daughterboard (position of the red marker for the right signal is not 100% correct: points to ground)
 - [x] Calibrate DRV2605L with the LRA
