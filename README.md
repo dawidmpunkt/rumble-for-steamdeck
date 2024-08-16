@@ -155,8 +155,9 @@ Powering the DRV2605 is a little more tricky, since it draws more power. I am st
 - [ ] Update schematic (pullup/-down on enable pins)
 - [ ] Locate power sources for the circuit (Hook up ATTiny to daughterboard and DRV2605L directly to Battery?)
 - [ ] Fix errors on the picture of the daughterboard (position of the red marker for the right signal is not 100% correct: points to ground)
-- [ ] Calibrate DRV2605L with the LRA
-- [ ] Configure DRV2605L in audio mode
+- [x] Calibrate DRV2605L with the LRA
+- [x] Configure DRV2605L in audio mode
+- [ ] Work out issues with calibration of AFT14A903A LRA
 - [ ] Filter out haptic feedback, pass-through for game-rumble signal
 - [ ] Test different actuators (ALPS AFR14A901B, Vibronics VJP12, INEED MOTOR)
 - [ ] Design 3D-printed actuator mount
