@@ -116,6 +116,11 @@ Steps in the tutorials above:
 - burn bootloader on ATtiny
 - upload sketch to ATtiny.
 
+### Configuring the DRV2605L Haptics Driver
+
+To configure the DRV2605L Haptics Driver I used the DRV2604/5 Design Equation document (https://www.ti.com/tool/DRV2604-2605_DESIGN_TOOL), provided on the TI website.
+The configuration tool (SLOR114, ZIP File containing two Excel files) can be downloaded here: https://www.ti.com/tool/download/SLOR114
+
 ~~The DRV2605L was configured in Audio-to-Vibe mode in the first successful tests.~~
 The DRV2605L is configured in Audio mode now.
 
