@@ -152,7 +152,7 @@ Caution: There have been reports of damages to the daughterboards by high curren
 
 ~~I plan to draw the power the ATtiny vial the right daughterboard (as seen from the front. it is flipped, since we are looking at it from the back), since it draws very little power. The risk for damaging the daughterboard by high current draw is minimal this way. Also, this way it will only be powered, if the steam deck is on and not drawing any power if the steam deck is sleeping/off.
 Powering the DRV2605 is a little more tricky, since it draws more power. I am still working on this. I will try to use a step-down converter, hooked up to the Steam Deck's battery that will be triggered on, when there is power on the daughterboard.~~
-Power will be drawn directly from the battery by connecting a small switching-mode power supply (SMPS) to the battery. The SMPS will turn on, when power is applied via USB (via an enable-pin).
+Power will be drawn ~~directly from the battery~~ (not safe for a large load. Can cause issues with the charging IC. can work for just the DRV2605 and a small LRA) from the main power rail (after I find the main power rail after the load switch) by connecting a small switching-mode power supply (SMPS) to the battery. The SMPS will turn on, when power is applied via USB (via an enable-pin).
 The device can also be toggled on/off via I2C. (see separate project: https://github.com/dawidmpunkt/SteamDeck-I2C-MUX_Buffer)
 
 ## Issues
