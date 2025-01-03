@@ -103,8 +103,15 @@ Information on rumble signals via USB is documented in the Steam Controller Sing
 
 ### Routing via I2C
 
+On the LCD Steam Deck (non-refreshed version, silver mainboard cover) an I2C interface is accessed by attaching a circuit to the Steam Deck's audio board.
+A FPC was designed to be fit in the 8 surface connector. The FPC with the brightness sensor and the microphones can be connected directly on the rumble FPC so all signals are passed through.
 
-## Hardware
+The I2C interface is not available at the audio board on the refreshed LCD Steam Deck and the Steam Deck OLED. Instead it is available directly at the mainboard. A FPC will be designed to fit in the 19 pin connector on the mainboard. Hopefully valve will give us an easier option to attach external devices on future devices.
+
+The rumble FPC contains an I2C multiplexer and two DRV2605L motor drivers. The I2C multiplexer is necessary, because the I2C address cannot be changed on the motor drivers
+The motor drivers are programmed by selecting one I2C channel after the other. Afterwards both I2C channels are set active. The rumble signal can be sent to both drivers via a common broadcast address.
+
+### Motors/Actuators
 
 ![Alt text](pictures/Schematic-V0.4.jpg?raw=true "Schematic")
 <br />Figure 7: Schematic diagram of wiring of the devices, that are used in the mod.
@@ -112,27 +119,27 @@ Information on rumble signals via USB is documented in the Steam Controller Sing
 ![Alt text](pictures/Actuator_mount.jpg?raw=true "Actuator mounts")
 <br />Figure 8: 3D printed Actuator Mounts for ERM (left) and LRA (right).
 
+### RumbleSticks
+Due to the large mass of the Steam Deck it is difficult to transmit sufficient vibration to the user. On the Steam Deck's touchpads this is solved by partially decoupling the trackpads from the Steam Deck by using "springs".
+
+A similar approach was used with the RumbleSticks. A small coin vibration motor (10 mm resp. 12 mm) was integrated in the head of a joystick cap right under the spot, where the thumg is touching the joystick. By design, the joystick cap is sufficiently decoupled (in the x- and y-axis) from the rest of the device. This way only a small mass needs to be moved in order to transmit vibration. A coin vibration motor was chosen, due to the form factor and the direction of the vibration in the x- and y-axis.
+The vibration motor is connected to the Rumble FPC.
+A wire is soldered to the shell of the motor and connected to the board of the joystick. This way haptic touch functionality is retained (possibly needs fine-adjustment in the future).
+
 ### Configuring the DRV2605L Haptics Driver
 
 To configure the DRV2605L Haptics Driver I used the DRV2604/5 Design Equation document (https://www.ti.com/tool/DRV2604-2605_DESIGN_TOOL), provided on the TI website.
 The configuration tool (SLOR114, ZIP File containing two Excel files) can be downloaded here: https://www.ti.com/tool/download/SLOR114
 
-~~The DRV2605L was configured in Audio-to-Vibe mode in the first successful tests.~~
-The DRV2605L is configured in Audio mode now.
-
-You can find the code [here](DRV2605_test.ino). 
-
 ### Where do we take the power from?
 
 Caution: There have been reports of damages to the daughterboards by high current draw:
 <br />https://github.com/WUBBSY/RGBDeck
-<br />Also, connecting anything directly to the Steam Deck's battery can cause the Deck to refuse to start up or wake from standby:
+<br />Also, connecting anything directly to the Steam Deck's battery can cause the Deck to refuse to start up or wake from standby (most likely issues with the charging IC due to a different load):
 <br />https://github.com/WUBBSY/RGBDeck/issues/1
 
-~~I plan to draw the power the ATtiny vial the right daughterboard (as seen from the front. it is flipped, since we are looking at it from the back), since it draws very little power. The risk for damaging the daughterboard by high current draw is minimal this way. Also, this way it will only be powered, if the steam deck is on and not drawing any power if the steam deck is sleeping/off.
-Powering the DRV2605 is a little more tricky, since it draws more power. I am still working on this. I will try to use a step-down converter, hooked up to the Steam Deck's battery that will be triggered on, when there is power on the daughterboard.~~
-Power will be drawn ~~directly from the battery~~ (not safe for a large load. Can cause issues with the charging IC. can work for just the DRV2605 and a small LRA) from the main power rail (after I find the main power rail after the load switch) by connecting a small switching-mode power supply (SMPS) to the battery. The SMPS will turn on, when power is applied via USB (via an enable-pin).
-The device can also be toggled on/off via I2C. (see separate project: https://github.com/dawidmpunkt/SteamDeck-I2C-MUX_Buffer)
+Power is drawn by connecting a small buck converter to the main power rail. Optional: The buck converter will turn on, when power is applied on an enable-pin.
+The rumble drivers can also be toggled on/off via I2C. (see separate project: https://github.com/dawidmpunkt/SteamDeck-I2C-MUX_Buffer)
 
 ## Issues
 
