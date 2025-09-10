@@ -1,4 +1,4 @@
-#Rationale
+# Rationale
 
 The haptic response in Valve's Steam Deck provides a great effect while using the trackpads.
 While the effect feels quite strong, as fingers are touching the touchpads, it is otherwise barely noticeable.
