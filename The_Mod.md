@@ -54,10 +54,10 @@ A similar approach was used with the RumbleSticks. A small coin vibration motor 
 The vibration motor is connected to the Rumble FPC.
 A wire is soldered to the shell of the motor and connected to the board of the joystick. This way haptic touch functionality is retained (possibly needs fine-adjustment in the future).
 
-![Alt text](pictures/Rumblestick1.jpg")
+![Alt text](pictures/Rumblestick1.jpg)
 <br />Figure of a Rumblestick (Motor integrated into the Joystick cap).
 
-![Alt text](pictures/Rumblestick2.jpg")
+![Alt text](pictures/Rumblestick2.jpg)
 <br />Figure of a Rumblestick (Motor integrated into the Joystick cap).
 
 ### Configuring the DRV2605L Haptics Driver
