@@ -28,7 +28,7 @@ With that said: good luck and happy tinkering.
   <br />https://www.steamdeck.com
 
 ## Rationale:
-Moved [here] (/RATIONALE.md)
+Moved [here] (RATIONALE.md)
 
 ### Aim
 
