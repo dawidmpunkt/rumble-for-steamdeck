@@ -58,7 +58,7 @@ A wire is soldered to the shell of the motor and connected to the board of the j
 <br />Figure of a Rumblestick (Motor integrated into the Joystick cap).
 
 ![Alt text](pictures/Rumblestick2.jpg)
-<br />Figure of a Rumblestick (Motor integrated into the Joystick cap).
+<br />Figure of a Rumblestick (Motor integrated into the Joystick cap). The orange wire is connected to the shell of the motor to allow capacitative touch function of the stick (capacitative switch).
 
 ### Configuring the DRV2605L Haptics Driver
 
