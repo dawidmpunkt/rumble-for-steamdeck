@@ -24,8 +24,16 @@ This project aims to utilize additional haptic motors to provide stronger rumble
 
 Moved [here](The_Mod.md)
 
-## Issues
+## Software
+To keep organization easier, I created a separate repository for for the software.
+https://github.com/dawidmpunkt/RumbleDeck
 
+The main component is a sniffer program (uses usbmon/wireshark), that monitors usb communication between SteamOS and the Steam Deck`s controller board. If a rumble signal is registered, the program sends a trigger signal to the RumbleBoard via I2C.
+Other components are:
+- A python script to initailize the DRV2605 driver(s) and to activate/deactivate the sniffer program. More features are to come.
+- A Decky Loader Plugin to comfortably access the software.
+
+## Issues
 
 ## ToDo
 - [x] Update schematic (pullup/-down on enable pins)
